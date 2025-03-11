@@ -1,3 +1,5 @@
+#!/home/mhamdi/work/dashboard/.venv/bin/python3
+
 import os
 import sys
 import subprocess
