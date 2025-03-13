@@ -8,10 +8,12 @@ from dotenv import dotenv_values, set_key
 
 from ui_dashboard import *
 
+pm2_path = '/home/mhamdi/.nvm/versions/node/v20.17.0/bin/pm2'
 
 class Dashboard(Ui_MainWindow):
     def __init__(self, MainWindow):
         super().setupUi(MainWindow)
+
         # DEPOT
         self.startDepot.clicked.connect(self.start_depot_clicked)
         self.stopDepot.clicked.connect(self.stop_depot_clicked)
@@ -64,6 +66,7 @@ class Dashboard(Ui_MainWindow):
 
     def start_soutenance_clicked(self):
         # self.startDepot.hide()
+        subprocess.run(["bash", "-c", "/home/mhamdi/work/dashboard/access/access.py"])
         command = ["pm2", "start"]
         os.chdir("/home/mhamdi/work/prof")
         port = self.portSoutenance.toPlainText()

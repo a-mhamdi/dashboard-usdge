@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'dashboardejfIEw.ui'
+## Form generated from reading UI file 'dashboardfbQatI.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.4.2
 ##
@@ -19,6 +19,7 @@ from PySide6.QtWidgets import (QApplication, QCalendarWidget, QCommandLinkButton
     QLabel, QMainWindow, QPushButton, QRadioButton,
     QSizePolicy, QStackedWidget, QStatusBar, QTextEdit,
     QWidget)
+import resources_rc
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -30,9 +31,6 @@ class Ui_MainWindow(object):
         self.stackedWidget = QStackedWidget(self.centralwidget)
         self.stackedWidget.setObjectName(u"stackedWidget")
         self.stackedWidget.setGeometry(QRect(10, 90, 441, 261))
-        self.page = QWidget()
-        self.page.setObjectName(u"page")
-        self.stackedWidget.addWidget(self.page)
         self.page_2 = QWidget()
         self.page_2.setObjectName(u"page_2")
         self.depot = QFrame(self.page_2)
@@ -50,7 +48,7 @@ class Ui_MainWindow(object):
         self.stopDepot.setStyleSheet(u"background-color: rgb(220, 50, 47);")
         self.depot_label = QLabel(self.depot)
         self.depot_label.setObjectName(u"depot_label")
-        self.depot_label.setGeometry(QRect(10, 0, 131, 50))
+        self.depot_label.setGeometry(QRect(10, 0, 141, 50))
         self.depot_label.setFrameShape(QFrame.NoFrame)
         self.portDepot = QTextEdit(self.depot)
         self.portDepot.setObjectName(u"portDepot")
@@ -70,7 +68,7 @@ class Ui_MainWindow(object):
         self.startJury.setStyleSheet(u"background-color: rgb(26, 95, 180);")
         self.jury_label = QLabel(self.jury)
         self.jury_label.setObjectName(u"jury_label")
-        self.jury_label.setGeometry(QRect(10, 0, 131, 50))
+        self.jury_label.setGeometry(QRect(10, 0, 141, 50))
         self.portJury = QTextEdit(self.jury)
         self.portJury.setObjectName(u"portJury")
         self.portJury.setGeometry(QRect(150, 15, 50, 30))
@@ -92,16 +90,13 @@ class Ui_MainWindow(object):
         self.portSoutenance.setGeometry(QRect(150, 15, 50, 30))
         self.soutenance_label = QLabel(self.soutenance)
         self.soutenance_label.setObjectName(u"soutenance_label")
-        self.soutenance_label.setGeometry(QRect(10, 0, 131, 50))
+        self.soutenance_label.setGeometry(QRect(10, 0, 141, 50))
         self.stackedWidget.addWidget(self.page_2)
         self.soutenance.raise_()
         self.jury.raise_()
         self.depot.raise_()
         self.page_3 = QWidget()
         self.page_3.setObjectName(u"page_3")
-        self.calendarWidget = QCalendarWidget(self.page_3)
-        self.calendarWidget.setObjectName(u"calendarWidget")
-        self.calendarWidget.setGeometry(QRect(10, 76, 421, 171))
         self.email = QFrame(self.page_3)
         self.email.setObjectName(u"email")
         self.email.setGeometry(QRect(9, 20, 421, 51))
@@ -123,12 +118,15 @@ class Ui_MainWindow(object):
         self.envoyer = QPushButton(self.email)
         self.envoyer.setObjectName(u"envoyer")
         self.envoyer.setGeometry(QRect(340, 10, 71, 31))
+        self.calendarWidget = QCalendarWidget(self.page_3)
+        self.calendarWidget.setObjectName(u"calendarWidget")
+        self.calendarWidget.setGeometry(QRect(10, 80, 421, 171))
         self.stackedWidget.addWidget(self.page_3)
         self.page_4 = QWidget()
         self.page_4.setObjectName(u"page_4")
         self.calendarWidget_2 = QCalendarWidget(self.page_4)
         self.calendarWidget_2.setObjectName(u"calendarWidget_2")
-        self.calendarWidget_2.setGeometry(QRect(10, 76, 421, 171))
+        self.calendarWidget_2.setGeometry(QRect(10, 80, 421, 171))
         self.email_2 = QFrame(self.page_4)
         self.email_2.setObjectName(u"email_2")
         self.email_2.setGeometry(QRect(10, 20, 420, 51))
@@ -157,11 +155,11 @@ class Ui_MainWindow(object):
         self.label_7 = QLabel(self.centralwidget)
         self.label_7.setObjectName(u"label_7")
         self.label_7.setGeometry(QRect(390, 350, 41, 41))
-        self.label_7.setPixmap(QPixmap(u"ISETBZ.png"))
+        self.label_7.setPixmap(QPixmap(u":/ISETBZ.png"))
         self.label_7.setScaledContents(True)
         self.label_9 = QLabel(self.centralwidget)
         self.label_9.setObjectName(u"label_9")
-        self.label_9.setGeometry(QRect(20, 10, 441, 71))
+        self.label_9.setGeometry(QRect(10, 30, 441, 71))
         MainWindow.setCentralWidget(self.centralwidget)
         self.statusbar = QStatusBar(MainWindow)
         self.statusbar.setObjectName(u"statusbar")
@@ -176,7 +174,7 @@ class Ui_MainWindow(object):
     # setupUi
 
     def retranslateUi(self, MainWindow):
-        MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
+        MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"Dashboard USDGE", None))
 #if QT_CONFIG(tooltip)
         self.startDepot.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-style:italic;\">D\u00e9marrer le serveur de d\u00e9p\u00f4t des rapports.</span></p></body></html>", None))
 #endif // QT_CONFIG(tooltip)
