@@ -1,0 +1,8 @@
+<!DOCTYPE RCC>
+<RCC>
+    <qresource prefix="/">
+        <file>ISETBZ.png</file>
+    </qresource>
+</RCC>
+
+<!-- pyside6-rcc resources.qrc -o resources_rc.py -->
