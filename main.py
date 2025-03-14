@@ -14,6 +14,12 @@ class Dashboard(Ui_MainWindow):
     def __init__(self, MainWindow):
         super().setupUi(MainWindow)
 
+        self.pages.setCurrentIndex(0)
+
+        self.btn1.clicked.connect(lambda: self.pages.setCurrentIndex(0))
+        self.btn2.clicked.connect(lambda: self.pages.setCurrentIndex(1))
+        self.btn3.clicked.connect(lambda: self.pages.setCurrentIndex(2))
+
         # DEPOT
         self.startDepot.clicked.connect(self.start_depot_clicked)
         self.stopDepot.clicked.connect(self.stop_depot_clicked)
@@ -23,6 +29,11 @@ class Dashboard(Ui_MainWindow):
         # SOUTENANCE
         self.startSoutenance.clicked.connect(self.start_soutenance_clicked)
         self.stopSoutenance.clicked.connect(self.stop_soutenance_clicked)
+        # ZIPPER
+        self.zipper.clicked.connect(self.zipper_fichiers)
+        # PVS
+        self.pv_btn.clicked.connect(self.generer_pvs)
+
 
     def start_depot_clicked(self):
         # self.startDepot.hide()
@@ -84,6 +95,23 @@ class Dashboard(Ui_MainWindow):
         command = ["pm2", "stop", "Évaluation"]
         os.chdir("/home/mhamdi/work/prof")
         subprocess.run(command)
+
+    def zipper_fichiers(self):
+        type = 'init'
+        if self.perf.isChecked():
+            type = 'perf'
+        date = self.calendarWidget.selectedDate().toString("dd-MM-yyyy")
+        zippedFiles = f"/home/mhamdi/work/dashboard/zip_per_prof.py {type} {date}"
+        subprocess.run(["bash", "-c", zippedFiles])
+
+    def generer_pvs(self):
+        type = 'init'
+        if self.perf_2.isChecked():
+            type = 'perf'
+        date = self.calendarWidget_2.selectedDate().toString("dd-MM-yyyy")
+        genPVs = f'echo === {type} {date} ==='
+        subprocess.run(["bash", "-c", genPVs])
+
 
 
 if __name__ == "__main__":
