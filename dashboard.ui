@@ -7,27 +7,27 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>447</width>
-    <height>414</height>
+    <width>448</width>
+    <height>422</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Dashboard USDGE</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QStackedWidget" name="stackedWidget">
+   <widget class="QStackedWidget" name="pages">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>90</y>
+      <x>0</x>
+      <y>100</y>
       <width>441</width>
       <height>261</height>
      </rect>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>2</number>
     </property>
-    <widget class="QWidget" name="page_2">
+    <widget class="QWidget" name="stages">
      <widget class="QFrame" name="depot">
       <property name="geometry">
        <rect>
@@ -287,7 +287,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
      <zorder>jury</zorder>
      <zorder>depot</zorder>
     </widget>
-    <widget class="QWidget" name="page_3">
+    <widget class="QWidget" name="zipp">
      <widget class="QFrame" name="email">
       <property name="geometry">
        <rect>
@@ -313,7 +313,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
         </rect>
        </property>
        <property name="text">
-        <string>Zipper et envoyer e-mails</string>
+        <string>Zipper les rapports</string>
        </property>
       </widget>
       <widget class="QRadioButton" name="init">
@@ -331,6 +331,9 @@ color: rgb(0, 0, 0);</string>
        </property>
        <property name="text">
         <string>I</string>
+       </property>
+       <property name="checked">
+        <bool>true</bool>
        </property>
       </widget>
       <widget class="QRadioButton" name="perf">
@@ -350,7 +353,7 @@ color: rgb(0, 0, 0);</string>
         <string>P</string>
        </property>
       </widget>
-      <widget class="QPushButton" name="envoyer">
+      <widget class="QPushButton" name="zipper">
        <property name="geometry">
         <rect>
          <x>340</x>
@@ -375,7 +378,7 @@ color: rgb(0, 0, 0);</string>
       </property>
      </widget>
     </widget>
-    <widget class="QWidget" name="page_4">
+    <widget class="QWidget" name="pvs">
      <widget class="QCalendarWidget" name="calendarWidget_2">
       <property name="geometry">
        <rect>
@@ -430,6 +433,9 @@ color: rgb(0, 0, 0);</string>
        <property name="text">
         <string>I</string>
        </property>
+       <property name="checked">
+        <bool>true</bool>
+       </property>
       </widget>
       <widget class="QRadioButton" name="perf_2">
        <property name="geometry">
@@ -448,7 +454,7 @@ color: rgb(0, 0, 0);</string>
         <string>P</string>
        </property>
       </widget>
-      <widget class="QPushButton" name="pushButton">
+      <widget class="QPushButton" name="pv_btn">
        <property name="geometry">
         <rect>
          <x>340</x>
@@ -467,8 +473,8 @@ color: rgb(0, 0, 0);</string>
    <widget class="QLabel" name="label_6">
     <property name="geometry">
      <rect>
-      <x>190</x>
-      <y>340</y>
+      <x>180</x>
+      <y>350</y>
       <width>181</width>
       <height>61</height>
      </rect>
@@ -480,8 +486,8 @@ color: rgb(0, 0, 0);</string>
    <widget class="QLabel" name="label_7">
     <property name="geometry">
      <rect>
-      <x>390</x>
-      <y>350</y>
+      <x>380</x>
+      <y>360</y>
       <width>41</width>
       <height>41</height>
      </rect>
@@ -499,14 +505,65 @@ color: rgb(0, 0, 0);</string>
    <widget class="QLabel" name="label_9">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>30</y>
+      <x>0</x>
+      <y>10</y>
       <width>441</width>
-      <height>71</height>
+      <height>61</height>
      </rect>
     </property>
     <property name="text">
      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-family:'Montserrat','sans-serif'; font-size:36px; color:#ffffff; text-transform:uppercase;&quot;&gt;Gestion des stages &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btn2">
+    <property name="geometry">
+     <rect>
+      <x>350</x>
+      <y>80</y>
+      <width>41</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(26, 95, 180);
+color: rgb(0, 0, 0);</string>
+    </property>
+    <property name="text">
+     <string>ZIP</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btn1">
+    <property name="geometry">
+     <rect>
+      <x>270</x>
+      <y>80</y>
+      <width>81</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(26, 95, 180);
+color: rgb(0, 0, 0);</string>
+    </property>
+    <property name="text">
+     <string>SERVEURS</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btn3">
+    <property name="geometry">
+     <rect>
+      <x>390</x>
+      <y>80</y>
+      <width>41</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(26, 95, 180);
+color: rgb(0, 0, 0);</string>
+    </property>
+    <property name="text">
+     <string>PVs</string>
     </property>
    </widget>
   </widget>
