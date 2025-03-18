@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'dashboardLlLUvL.ui'
+## Form generated from reading UI file 'dashboardGftbzy.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.4.2
 ##
@@ -25,7 +25,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(448, 422)
+        MainWindow.resize(449, 435)
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         self.pages = QStackedWidget(self.centralwidget)
