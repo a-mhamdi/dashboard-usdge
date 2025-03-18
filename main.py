@@ -15,10 +15,11 @@ class Dashboard(Ui_MainWindow):
         super().setupUi(MainWindow)
 
         self.pages.setCurrentIndex(0)
+        self.btn1.hide()
 
-        self.btn1.clicked.connect(lambda: self.pages.setCurrentIndex(0))
-        self.btn2.clicked.connect(lambda: self.pages.setCurrentIndex(1))
-        self.btn3.clicked.connect(lambda: self.pages.setCurrentIndex(2))
+        self.btn1.clicked.connect(self.page1_loader)
+        self.btn2.clicked.connect(self.page2_loader)
+        self.btn3.clicked.connect(self.page3_loader)
 
         # DEPOT
         self.startDepot.clicked.connect(self.start_depot_clicked)
@@ -34,6 +35,23 @@ class Dashboard(Ui_MainWindow):
         # PVS
         self.pv_btn.clicked.connect(self.generer_pvs)
 
+    def page1_loader(self):
+        self.pages.setCurrentIndex(0)
+        self.btn1.hide()
+        self.btn2.show()
+        self.btn3.show()
+
+    def page2_loader(self):
+        self.pages.setCurrentIndex(1)
+        self.btn1.show()
+        self.btn2.hide()
+        self.btn3.show()
+
+    def page3_loader(self):
+        self.pages.setCurrentIndex(2)
+        self.btn1.show()
+        self.btn2.show()
+        self.btn3.hide()
 
     def start_depot_clicked(self):
         # self.startDepot.hide()
@@ -105,18 +123,22 @@ class Dashboard(Ui_MainWindow):
         subprocess.run(["bash", "-c", zippedFiles])
 
     def generer_pvs(self):
+        os.chdir("/home/mhamdi/work/pvs")
         type = 'init'
         if self.perf_2.isChecked():
             type = 'perf'
-        date = self.calendarWidget_2.selectedDate().toString("dd-MM-yyyy")
-        genPVs = f'echo === {type} {date} ==='
-        subprocess.run(["bash", "-c", genPVs])
+        date = self.calendarWidget_2.selectedDate().toString("dd/MM/yyyy")
+        command = f'/home/mhamdi/work/pvs/pdf_generator.sh {type} {date}'
+        subprocess.run(["bash", "-c", command])
+        folder_to_open = 'xdg-open /home/mhamdi/Desktop/PVS'
+        subprocess.run(["bash", "-c", folder_to_open])
 
-
-
-if __name__ == "__main__":
+def main():
     app = QApplication(sys.argv)
     MainWindow = QMainWindow()
     ui = Dashboard(MainWindow)
     MainWindow.show()
     sys.exit(app.exec())
+
+if __name__ == '__main__':
+    main()

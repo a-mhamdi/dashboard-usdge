@@ -25,7 +25,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="stages">
      <widget class="QFrame" name="depot">
@@ -518,52 +518,64 @@ color: rgb(0, 0, 0);</string>
    <widget class="QPushButton" name="btn2">
     <property name="geometry">
      <rect>
-      <x>350</x>
-      <y>80</y>
-      <width>41</width>
-      <height>31</height>
+      <x>50</x>
+      <y>70</y>
+      <width>30</width>
+      <height>30</height>
      </rect>
+    </property>
+    <property name="toolTip">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-style:italic;&quot;&gt;Zipper les rapports par prof.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
     <property name="styleSheet">
      <string notr="true">background-color: rgb(26, 95, 180);
 color: rgb(0, 0, 0);</string>
     </property>
     <property name="text">
-     <string>ZIP</string>
+     <string>P2</string>
     </property>
    </widget>
    <widget class="QPushButton" name="btn1">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
     <property name="geometry">
      <rect>
-      <x>270</x>
-      <y>80</y>
-      <width>81</width>
-      <height>31</height>
+      <x>20</x>
+      <y>70</y>
+      <width>30</width>
+      <height>30</height>
      </rect>
+    </property>
+    <property name="toolTip">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-style:italic;&quot;&gt;Lancer les serveurs&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
     <property name="styleSheet">
      <string notr="true">background-color: rgb(26, 95, 180);
 color: rgb(0, 0, 0);</string>
     </property>
     <property name="text">
-     <string>SERVEURS</string>
+     <string>P1</string>
     </property>
    </widget>
    <widget class="QPushButton" name="btn3">
     <property name="geometry">
      <rect>
-      <x>390</x>
-      <y>80</y>
-      <width>41</width>
-      <height>31</height>
+      <x>80</x>
+      <y>70</y>
+      <width>30</width>
+      <height>30</height>
      </rect>
+    </property>
+    <property name="toolTip">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-style:italic;&quot;&gt;Générer les pvs&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
     <property name="styleSheet">
      <string notr="true">background-color: rgb(26, 95, 180);
 color: rgb(0, 0, 0);</string>
     </property>
     <property name="text">
-     <string>PVs</string>
+     <string>P3</string>
     </property>
    </widget>
   </widget>

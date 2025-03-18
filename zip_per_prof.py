@@ -28,7 +28,7 @@ with open('/home/mhamdi/work/dashboard/dept-ge.teachers.json', 'r') as file:
                 print(f"No documents found for {enseignant}")
                 continue
 
-            with zipfile.ZipFile("/home/mhamdi/Desktop/" + enseignant + ".zip", "w", zipfile.ZIP_DEFLATED) as zip_ref:
+            with zipfile.ZipFile("/home/mhamdi/Desktop/RAPPORTS/" + enseignant + ".zip", "w", zipfile.ZIP_DEFLATED) as zip_ref:
                 for rapport in rapports:
                     pdf_name = rapport + ".pdf"
                     path_to_pdf = "/var/isetbz/uploads/" + \

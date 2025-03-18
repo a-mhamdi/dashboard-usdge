@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'dashboardLQBBbJ.ui'
+## Form generated from reading UI file 'dashboardLlLUvL.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.4.2
 ##
@@ -164,17 +164,18 @@ class Ui_MainWindow(object):
         self.label_9.setGeometry(QRect(0, 10, 441, 61))
         self.btn2 = QPushButton(self.centralwidget)
         self.btn2.setObjectName(u"btn2")
-        self.btn2.setGeometry(QRect(350, 80, 41, 31))
+        self.btn2.setGeometry(QRect(50, 70, 30, 30))
         self.btn2.setStyleSheet(u"background-color: rgb(26, 95, 180);\n"
 "color: rgb(0, 0, 0);")
         self.btn1 = QPushButton(self.centralwidget)
         self.btn1.setObjectName(u"btn1")
-        self.btn1.setGeometry(QRect(270, 80, 81, 31))
+        self.btn1.setEnabled(True)
+        self.btn1.setGeometry(QRect(20, 70, 30, 30))
         self.btn1.setStyleSheet(u"background-color: rgb(26, 95, 180);\n"
 "color: rgb(0, 0, 0);")
         self.btn3 = QPushButton(self.centralwidget)
         self.btn3.setObjectName(u"btn3")
-        self.btn3.setGeometry(QRect(390, 80, 41, 31))
+        self.btn3.setGeometry(QRect(80, 70, 30, 30))
         self.btn3.setStyleSheet(u"background-color: rgb(26, 95, 180);\n"
 "color: rgb(0, 0, 0);")
         MainWindow.setCentralWidget(self.centralwidget)
@@ -184,7 +185,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.pages.setCurrentIndex(2)
+        self.pages.setCurrentIndex(1)
 
 
         QMetaObject.connectSlotsByName(MainWindow)
@@ -245,8 +246,17 @@ class Ui_MainWindow(object):
         self.label_6.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"right\"><span style=\" font-size:10pt; font-style:italic; color:#1a5fb4;\">ISET de Bizerte<br/>D\u00e9partement de g\u00e9nie \u00e9lectrique<br/>Unit\u00e9 des stages</span></p></body></html>", None))
         self.label_7.setText("")
         self.label_9.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><span style=\" font-family:'Montserrat','sans-serif'; font-size:36px; color:#ffffff; text-transform:uppercase;\">Gestion des stages </span></p></body></html>", None))
-        self.btn2.setText(QCoreApplication.translate("MainWindow", u"ZIP", None))
-        self.btn1.setText(QCoreApplication.translate("MainWindow", u"SERVEURS", None))
-        self.btn3.setText(QCoreApplication.translate("MainWindow", u"PVs", None))
+#if QT_CONFIG(tooltip)
+        self.btn2.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-style:italic;\">Zipper les rapports par prof.</span></p></body></html>", None))
+#endif // QT_CONFIG(tooltip)
+        self.btn2.setText(QCoreApplication.translate("MainWindow", u"P2", None))
+#if QT_CONFIG(tooltip)
+        self.btn1.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-style:italic;\">Lancer les serveurs</span></p></body></html>", None))
+#endif // QT_CONFIG(tooltip)
+        self.btn1.setText(QCoreApplication.translate("MainWindow", u"P1", None))
+#if QT_CONFIG(tooltip)
+        self.btn3.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-style:italic;\">G\u00e9n\u00e9rer les pvs</span></p></body></html>", None))
+#endif // QT_CONFIG(tooltip)
+        self.btn3.setText(QCoreApplication.translate("MainWindow", u"P3", None))
     # retranslateUi
 

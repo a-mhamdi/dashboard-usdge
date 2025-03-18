@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'accessrkNqeP.ui'
+## Form generated from reading UI file 'accessrbhTjB.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.4.2
 ##
@@ -43,8 +43,6 @@ class Ui_Dialog(object):
         self.pwd.setGeometry(QRect(100, 60, 111, 31))
 
         self.retranslateUi(Dialog)
-        # self.btn_ok.accepted.connect(Dialog.accept)
-        # self.btn_ok.rejected.connect(Dialog.reject)
 
         QMetaObject.connectSlotsByName(Dialog)
     # setupUi
