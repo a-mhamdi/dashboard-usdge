@@ -1,28 +1,25 @@
 from pymongo import MongoClient
 from bson import ObjectId
 
+import os
+
+from dotenv import load_dotenv
+load_dotenv()
+
 
 def find_documents_by_data(nature, date, enseignant):
-    """
-    Find documents where Data field matches a specific value and return their _id fields
-
-    Parameters:
-    connection_string (str): MongoDB connection string
-    database_name (str): Name of the database
-    collection_name (str): Name of the collection
-    data_value: Value to match in the Data field
-
-    Returns:
-    list: List of _id values from matching documents
-    """
 
     jury = "jury" + nature
 
     try:
         # Connect to MongoDB
-        client = MongoClient("mongodb://localhost:27017/connection_string")
-        db = client["dept-ge"]
-        collection = db["students"]
+        client = os.getenv("DATABASE_URL")
+        db_name = os.getenv("DB_NAME")
+        collection_name = os.getenv("COLLECTION_NAME")
+        client = MongoClient(client)
+        # Access the database and collection
+        db = client[db_name]
+        collection = db[collection_name]
 
         # Query documents
         query = {
