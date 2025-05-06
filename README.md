@@ -1,6 +1,4 @@
-# README #
-
-Tableau de bord de pilotage des stages - Département Génie Électrique
+# Tableau de bord de pilotage des stages - Département Génie Électrique #
 
 **Lancer les serveurs** *(dépôt, affectation jury, et soutenance)*
 
