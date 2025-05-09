@@ -12,4 +12,4 @@
 
 ![P3](Images/P3.png)
 
-Cette application est fourni sous licence **MIT** - Voir le fichier [LICENSE](LICENSE) pour plus de détails. 
+Cette application est fournie sous licence **MIT** - Voir le fichier [LICENSE](LICENSE) pour plus de détails. 
