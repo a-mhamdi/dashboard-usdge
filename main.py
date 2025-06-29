@@ -34,6 +34,8 @@ class Dashboard(Ui_MainWindow):
         self.zipper.clicked.connect(self.zipper_fichiers)
         # PVS
         self.pv_btn.clicked.connect(self.generer_pvs)
+        # UPDATE DB
+        self.updatedb.clicked.connect(self.update_db)
 
     def page1_loader(self):
         self.pages.setCurrentIndex(0)
@@ -133,12 +135,20 @@ class Dashboard(Ui_MainWindow):
         folder_to_open = 'xdg-open /home/mhamdi/Desktop/PVS'
         subprocess.run(["bash", "-c", folder_to_open])
 
+    def update_db(self):
+        subprocess.run(["bash", "-c", "./update_db.py"])
+        # updatedb = QApplication(sys.argv)
+        #updatedb_window = QMainWindow()
+        #ui_updatedb = UpdateDB(updatedb_window)
+        #updatedb_window.show()
+        #sys.exit(updatedb_window.exec_())
+
 def main():
     app = QApplication(sys.argv)
     MainWindow = QMainWindow()
     ui = Dashboard(MainWindow)
     MainWindow.show()
-    sys.exit(app.exec())
+    sys.exit(app.exec_())
 
 if __name__ == '__main__':
     main()

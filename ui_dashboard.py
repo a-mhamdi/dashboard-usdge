@@ -1,24 +1,17 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'dashboardGftbzy.ui'
+## Form generated from reading UI file 'dashboardYHdtBn.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.4.2
+## Created by: Qt User Interface Compiler version 5.15.3
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
 
-from PySide6.QtCore import (QCoreApplication, QDate, QDateTime, QLocale,
-    QMetaObject, QObject, QPoint, QRect,
-    QSize, QTime, QUrl, Qt)
-from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
-    QFont, QFontDatabase, QGradient, QIcon,
-    QImage, QKeySequence, QLinearGradient, QPainter,
-    QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QApplication, QCalendarWidget, QCommandLinkButton, QFrame,
-    QLabel, QMainWindow, QPushButton, QRadioButton,
-    QSizePolicy, QStackedWidget, QStatusBar, QTextEdit,
-    QWidget)
+from PySide2.QtCore import *
+from PySide2.QtGui import *
+from PySide2.QtWidgets import *
+
 import resources_rc
 
 class Ui_MainWindow(object):
@@ -178,6 +171,13 @@ class Ui_MainWindow(object):
         self.btn3.setGeometry(QRect(80, 70, 30, 30))
         self.btn3.setStyleSheet(u"background-color: rgb(26, 95, 180);\n"
 "color: rgb(0, 0, 0);")
+        self.updatedb = QToolButton(self.centralwidget)
+        self.updatedb.setObjectName(u"updatedb")
+        self.updatedb.setGeometry(QRect(280, 70, 111, 41))
+        font = QFont()
+        font.setBold(True)
+        font.setWeight(75)
+        self.updatedb.setFont(font)
         MainWindow.setCentralWidget(self.centralwidget)
         self.statusbar = QStatusBar(MainWindow)
         self.statusbar.setObjectName(u"statusbar")
@@ -200,13 +200,10 @@ class Ui_MainWindow(object):
         self.stopDepot.setText(QCoreApplication.translate("MainWindow", u"Arr\u00eater", None))
         self.depot_label.setText(QCoreApplication.translate("MainWindow", u"D\u00e9p\u00f4t des rapports", None))
         self.portDepot.setHtml(QCoreApplication.translate("MainWindow", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
-"hr { height: 1px; border-width: 0; }\n"
-"li.unchecked::marker { content: \"\\2610\"; }\n"
-"li.checked::marker { content: \"\\2612\"; }\n"
-"</style></head><body style=\" font-family:'Delicious Heavy'; font-size:12pt; font-weight:400; font-style:normal;\">\n"
-"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">PORT</p></body></html>", None))
+"</style></head><body style=\" font-family:'Ubuntu'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
+"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Delicious Heavy'; font-size:12pt;\">PORT</span></p></body></html>", None))
         self.stopJury.setText(QCoreApplication.translate("MainWindow", u"Arr\u00eater", None))
 #if QT_CONFIG(tooltip)
         self.startJury.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-style:italic;\">Affecter les membres de jury.</span></p></body></html>", None))
@@ -214,26 +211,20 @@ class Ui_MainWindow(object):
         self.startJury.setText(QCoreApplication.translate("MainWindow", u"D\u00e9marrer", None))
         self.jury_label.setText(QCoreApplication.translate("MainWindow", u"Affectation du jury", None))
         self.portJury.setHtml(QCoreApplication.translate("MainWindow", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
-"hr { height: 1px; border-width: 0; }\n"
-"li.unchecked::marker { content: \"\\2610\"; }\n"
-"li.checked::marker { content: \"\\2612\"; }\n"
-"</style></head><body style=\" font-family:'Delicious Heavy'; font-size:12pt; font-weight:400; font-style:normal;\">\n"
-"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">PORT</p></body></html>", None))
+"</style></head><body style=\" font-family:'Ubuntu'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
+"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Delicious Heavy'; font-size:12pt;\">PORT</span></p></body></html>", None))
         self.stopSoutenance.setText(QCoreApplication.translate("MainWindow", u"Arr\u00eater", None))
 #if QT_CONFIG(tooltip)
         self.startSoutenance.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p>D\u00e9marrer les soutenances.</p></body></html>", None))
 #endif // QT_CONFIG(tooltip)
         self.startSoutenance.setText(QCoreApplication.translate("MainWindow", u"D\u00e9marrer", None))
         self.portSoutenance.setHtml(QCoreApplication.translate("MainWindow", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
-"hr { height: 1px; border-width: 0; }\n"
-"li.unchecked::marker { content: \"\\2610\"; }\n"
-"li.checked::marker { content: \"\\2612\"; }\n"
-"</style></head><body style=\" font-family:'Delicious Heavy'; font-size:12pt; font-weight:400; font-style:normal;\">\n"
-"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">PORT</p></body></html>", None))
+"</style></head><body style=\" font-family:'Ubuntu'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
+"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Delicious Heavy'; font-size:12pt;\">PORT</span></p></body></html>", None))
         self.soutenance_label.setText(QCoreApplication.translate("MainWindow", u"Portail d'\u00e9valuation", None))
         self.label.setText(QCoreApplication.translate("MainWindow", u"Zipper les rapports", None))
         self.init.setText(QCoreApplication.translate("MainWindow", u"I", None))
@@ -258,5 +249,12 @@ class Ui_MainWindow(object):
         self.btn3.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-style:italic;\">G\u00e9n\u00e9rer les pvs</span></p></body></html>", None))
 #endif // QT_CONFIG(tooltip)
         self.btn3.setText(QCoreApplication.translate("MainWindow", u"P3", None))
+#if QT_CONFIG(tooltip)
+        self.updatedb.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-weight:600; color:#a51d2d;\">Editer la liste des \u00e9tudiants</span></p></body></html>", None))
+#endif // QT_CONFIG(tooltip)
+#if QT_CONFIG(whatsthis)
+        self.updatedb.setWhatsThis("")
+#endif // QT_CONFIG(whatsthis)
+        self.updatedb.setText(QCoreApplication.translate("MainWindow", u"...", None))
     # retranslateUi
 
