@@ -1,1 +1,84 @@
-/home/mhamdi/work/prof/docker-compose.yml
+services:
+  eval-1:
+    build: .
+    container_name: eval-cont-1
+    ports:
+      - "${CONT1_PORT}:${APP_PORT}"
+    env_file:
+      - .env
+    environment:
+      - NODE_ENV=production
+      - APP_INSTANCE=USDGE EVAL \#1
+    depends_on:
+      mongo:
+        condition: service_healthy
+    networks:
+      - usdge-network
+    volumes:
+      - ${SRC_PATH}:/app/src
+    restart: unless-stopped
+
+  eval-2:
+    build: .
+    container_name: eval-cont-2
+    ports:
+      - "${CONT2_PORT}:${APP_PORT}"
+    env_file:
+      - .env
+    environment:
+      - NODE_ENV=production
+      - APP_INSTANCE=USDGE EVAL \#2
+    depends_on:
+      mongo:
+        condition: service_healthy
+    networks:
+      - usdge-network
+    volumes:
+      - ${SRC_PATH}:/app/src
+    restart: unless-stopped
+
+  eval-3:
+    build: .
+    container_name: eval-cont-3
+    ports:
+      - "${CONT3_PORT}:${APP_PORT}"
+    env_file:
+      - .env
+    environment:
+      - NODE_ENV=production
+      - APP_INSTANCE=USDGE EVAL \#3
+    depends_on:
+      mongo:
+        condition: service_healthy
+    networks:
+      - usdge-network
+    volumes:
+      - ${SRC_PATH}:/app/src
+    restart: unless-stopped
+
+  mongo:
+    image: mongo:latest
+    ports:
+      - "${MOGO_PORT}:${MONGO_PORT}"
+    env_file:
+      - .env
+    volumes:
+      - /var/lib/mongodb:/data/db
+    networks:
+      - usdge-network
+    restart: unless-stopped
+    healthcheck:
+      test: [ "CMD", "mongosh", "--eval", "db.adminCommand('ping')" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+
+volumes:
+  mongo-data:
+
+networks:
+  usdge-network:
+    driver: bridge
+
+
