@@ -1,7 +1,7 @@
 FROM node:22.9.0
 LABEL authors="mhamdi"
 
-EXPOSE 27017 3000
+EXPOSE ${MONGO_PORT} ${APP_PORT}
 
 WORKDIR /app
 COPY package*.json /app
