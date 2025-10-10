@@ -3,17 +3,38 @@ services:
   nginx:
     image: nginx:alpine
     container_name: nginx-proxy
-    volumes:
-      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
-      - ./nginx/ssl/:/etc/nginx/ssl/
-    depends_on:
-      - eval-1
-    networks:
-      - eval-network
+    restart: unless-stopped
     ports:
       - "80:80"
       - "443:443"
-    restart: unless-stopped
+    volumes:
+      - ./nginx/html/:/usr/share/nginx/html/
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./nginx/ssl/:/etc/nginx/ssl/
+    depends_on:
+      - depot-1
+      - eval-1
+    networks:
+      - usdge-network
+
+  depot-1:
+      image: usdge-depot
+      container_name: depot-cont-1
+      env_file:
+        - .env
+      environment:
+        - NODE_ENV=production
+        - APP_INSTANCE=USDGE DEPOT \#1
+        - MONGO_URI=${MONGO_URI}
+      volumes:
+        - ${DEPOT_PATH}:/app/src
+        - ${PDF_PATH}:/app/pdf/uploads
+      depends_on:
+        mongo-srv:
+          condition: service_healthy  # Wait for MongoDB to be healthy
+      networks:
+        - usdge-network
+      restart: unless-stopped
 
   eval-1:
       image: usdge-eval
@@ -32,7 +53,7 @@ services:
         mongo-srv:
           condition: service_healthy  # Wait for MongoDB to be healthy
       networks:
-        - eval-network
+        - usdge-network
       restart: unless-stopped
 
   mongo-srv:
@@ -47,13 +68,13 @@ services:
     volumes:
       - usdge-db:/data/db
     healthcheck:
-      test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
+      test: [ "CMD", "mongosh", "--eval", "db.adminCommand('ping')" ]
       interval: 10s
       timeout: 5s
       retries: 5
       start_period: 10s
     networks:
-      - eval-network
+      - usdge-network
     ports:
       - "127.0.0.1:${MONGO_PORT}:27017"
     restart: unless-stopped
@@ -76,7 +97,7 @@ services:
       mongo-srv:
         condition: service_healthy  # Wait for MongoDB to be healthy
     networks:
-      - eval-network
+      - usdge-network
     ports:
       - "127.0.0.1:8081:8081"
     restart: unless-stopped
@@ -86,5 +107,5 @@ volumes:
     external: true
 
 networks:
-  eval-network:
+  usdge-network:
     driver: bridge
