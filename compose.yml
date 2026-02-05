@@ -1,0 +1,108 @@
+services:
+
+  nginx:
+    image: nginx:alpine
+    container_name: nginx-proxy
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/html/:/usr/share/nginx/html/
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./nginx/ssl/:/etc/nginx/ssl/
+    depends_on:
+      - depot
+      - eval
+    networks:
+      - usdge-network
+
+  depot:
+      image: usdge-depot
+      env_file:
+        - .env
+      environment:
+        - NODE_ENV=production
+        - APP_INSTANCE=USDGE DEPOT
+        - MONGO_URI=${MONGO_URI}
+      volumes:
+        - ${PDF_PATH}:/app/pdf/uploads
+      depends_on:
+        mongo-srv:
+          condition: service_healthy  # Wait for MongoDB to be healthy
+      networks:
+        - usdge-network
+      restart: unless-stopped
+
+  eval:
+      image: usdge-eval
+      env_file:
+        - .env
+      environment:
+        - NODE_ENV=production
+        - JWT_SECRET=${JWT_SECRET}
+        - APP_INSTANCE=USDGE EVAL
+        - MONGO_URI=${MONGO_URI}
+      volumes:
+        - ${PLANNING_PDF}:/app/src/public/planning:ro
+        - ${PDF_PATH}:/app/pdf/uploads
+      depends_on:
+        mongo-srv:
+          condition: service_healthy  # Wait for MongoDB to be healthy
+      networks:
+        - usdge-network
+      restart: unless-stopped
+
+  mongo-srv:
+    image: mongo:latest
+    container_name: mongo-cont
+    env_file:
+      - .env
+    environment:
+      MONGO_INITDB_DATABASE: ${MONGO_DATABASE}
+      # MONGO_INITDB_ROOT_USERNAME: ${MONGO_USERNAME}
+      # MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASSWORD}
+    volumes:
+      - usdge-db:/data/db
+    healthcheck:
+      test: [ "CMD", "mongosh", "--eval", "db.adminCommand('ping')" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    networks:
+      - usdge-network
+    ports:
+      - "127.0.0.1:${MONGO_PORT}:27017"
+    restart: unless-stopped
+
+  dbui-srv:
+    image: mongo-express:latest
+    container_name: dbui-cont
+    env_file:
+      - .env
+    environment:
+      ME_CONFIG_OPTIONS_EDITORTHEME: "night"
+      ME_CONFIG_MONGODB_SERVER: mongo-srv
+      ME_CONFIG_MONGODB_ENABLE_ADMIN: true
+      ME_CONFIG_MONGODB_AUTH_DATABASE: ${MONGO_DATABASE}
+      # ME_CONFIG_MONGODB_AUTH_USERNAME: ${MONGO_USERNAME}
+      # ME_CONFIG_MONGODB_AUTH_PASSWORD: ${MONGO_PASSWORD}
+      ME_CONFIG_BASICAUTH_USERNAME: ${MONGOEXPRESS_LOGIN}
+      ME_CONFIG_BASICAUTH_PASSWORD: ${MONGOEXPRESS_PASSWORD}
+    depends_on:
+      mongo-srv:
+        condition: service_healthy  # Wait for MongoDB to be healthy
+    networks:
+      - usdge-network
+    ports:
+      - "127.0.0.1:8081:8081"
+    restart: unless-stopped
+
+volumes:
+  usdge-db:
+    external: true
+
+networks:
+  usdge-network:
+    driver: bridge
