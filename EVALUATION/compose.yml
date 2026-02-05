@@ -1,5 +1,4 @@
 services:
-
   nginx:
     image: nginx:alpine
     container_name: nginx-proxy
@@ -7,7 +6,7 @@ services:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf
       - ./nginx/ssl/:/etc/nginx/ssl/
     depends_on:
-      - eval-1
+      - eval
     networks:
       - eval-network
     ports:
@@ -15,25 +14,25 @@ services:
       - "443:443"
     restart: unless-stopped
 
-  eval-1:
-      image: usdge-eval
-      container_name: eval-cont-1
-      env_file:
-        - .env
-      environment:
-        - NODE_ENV=production
-        - JWT_SECRET=${JWT_SECRET}
-        - APP_INSTANCE=USDGE EVAL \#1
-        - MONGO_URI=${MONGO_URI}
-      volumes:
-        - ${EVAL_PATH}:/app/src
-        - ${PDF_PATH}:/app/pdf/uploads
-      depends_on:
-        mongo-srv:
-          condition: service_healthy  # Wait for MongoDB to be healthy
-      networks:
-        - eval-network
-      restart: unless-stopped
+  eval:
+    image: usdge-eval
+    container_name: eval-cont
+    env_file:
+      - .env
+    environment:
+      - NODE_ENV=production
+      - JWT_SECRET=${JWT_SECRET}
+      - APP_INSTANCE=USDGE EVAL
+      - MONGO_URI=${MONGO_URI}
+    volumes:
+      - ${PLANNING_PDF}:/app/src/public/planning:ro
+      - ${PDF_PATH}:/app/pdf/uploads
+    depends_on:
+      mongo-srv:
+        condition: service_healthy # Wait for MongoDB to be healthy
+    networks:
+      - eval-network
+    restart: unless-stopped
 
   mongo-srv:
     image: mongo:latest
@@ -74,7 +73,7 @@ services:
       ME_CONFIG_BASICAUTH_PASSWORD: ${MONGOEXPRESS_PASSWORD}
     depends_on:
       mongo-srv:
-        condition: service_healthy  # Wait for MongoDB to be healthy
+        condition: service_healthy # Wait for MongoDB to be healthy
     networks:
       - eval-network
     ports:

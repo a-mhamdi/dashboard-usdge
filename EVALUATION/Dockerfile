@@ -5,6 +5,12 @@ ENV TZ="Africa/Tunis"
 
 WORKDIR /app
 COPY package*.json /app
-RUN npm ci --only=production
+RUN npm ci
+
+COPY . .
+
+RUN npm run build:prod
+
+RUN chmod +x ./dev-to-prod.sh && ./dev-to-prod.sh
 
 CMD ["node", "./src/server.mjs"]

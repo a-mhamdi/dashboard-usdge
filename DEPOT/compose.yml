@@ -1,60 +1,36 @@
 services:
-
   nginx:
     image: nginx:alpine
     container_name: nginx-proxy
-    restart: unless-stopped
-    ports:
-      - "80:80"
-      - "443:443"
     volumes:
-      - ./nginx/html/:/usr/share/nginx/html/
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf
       - ./nginx/ssl/:/etc/nginx/ssl/
     depends_on:
-      - depot-1
-      - eval-1
+      - depot
     networks:
-      - usdge-network
+      - depot-network
+    ports:
+      - "80:80"
+      - "443:443"
+    restart: unless-stopped
 
-  depot-1:
-      image: usdge-depot
-      container_name: depot-cont-1
-      env_file:
-        - .env
-      environment:
-        - NODE_ENV=production
-        - APP_INSTANCE=USDGE DEPOT \#1
-        - MONGO_URI=${MONGO_URI}
-      volumes:
-        - ${DEPOT_PATH}:/app/src
-        - ${PDF_PATH}:/app/pdf/uploads
-      depends_on:
-        mongo-srv:
-          condition: service_healthy  # Wait for MongoDB to be healthy
-      networks:
-        - usdge-network
-      restart: unless-stopped
-
-  eval-1:
-      image: usdge-eval
-      container_name: eval-cont-1
-      env_file:
-        - .env
-      environment:
-        - NODE_ENV=production
-        - JWT_SECRET=${JWT_SECRET}
-        - APP_INSTANCE=USDGE EVAL \#1
-        - MONGO_URI=${MONGO_URI}
-      volumes:
-        - ${EVAL_PATH}:/app/src
-        - ${PDF_PATH}:/app/pdf/uploads
-      depends_on:
-        mongo-srv:
-          condition: service_healthy  # Wait for MongoDB to be healthy
-      networks:
-        - usdge-network
-      restart: unless-stopped
+  depot:
+    image: usdge-depot
+    container_name: depot-cont
+    env_file:
+      - .env
+    environment:
+      - NODE_ENV=production
+      - APP_INSTANCE=USDGE DEPOT
+      - MONGO_URI=${MONGO_URI}
+    volumes:
+      - ${PDF_PATH}:/app/pdf/uploads
+    depends_on:
+      mongo-srv:
+        condition: service_healthy # Wait for MongoDB to be healthy
+    networks:
+      - depot-network
+    restart: unless-stopped
 
   mongo-srv:
     image: mongo:latest
@@ -68,13 +44,13 @@ services:
     volumes:
       - usdge-db:/data/db
     healthcheck:
-      test: [ "CMD", "mongosh", "--eval", "db.adminCommand('ping')" ]
+      test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
       interval: 10s
       timeout: 5s
       retries: 5
       start_period: 10s
     networks:
-      - usdge-network
+      - depot-network
     ports:
       - "127.0.0.1:${MONGO_PORT}:27017"
     restart: unless-stopped
@@ -95,9 +71,9 @@ services:
       ME_CONFIG_BASICAUTH_PASSWORD: ${MONGOEXPRESS_PASSWORD}
     depends_on:
       mongo-srv:
-        condition: service_healthy  # Wait for MongoDB to be healthy
+        condition: service_healthy # Wait for MongoDB to be healthy
     networks:
-      - usdge-network
+      - depot-network
     ports:
       - "127.0.0.1:8081:8081"
     restart: unless-stopped
@@ -107,5 +83,5 @@ volumes:
     external: true
 
 networks:
-  usdge-network:
+  depot-network:
     driver: bridge
